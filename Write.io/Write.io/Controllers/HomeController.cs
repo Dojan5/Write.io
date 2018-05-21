@@ -18,7 +18,7 @@ namespace Write.io.Controllers
 
         public ActionResult Search(string Query)
         {
-            var model = db.Blogs.Where(b => b.Title.Contains(Query) || b.Body.Contains(Query)).Select(b => b).ToList();
+            var model = db.Blogs.Where(b => b.Title.Contains(Query) || b.Body.Contains(Query) || b.User.FirstName.Contains(Query) || b.User.LastName.Contains(Query) || b.User.Email.Contains(Query)).Select(b => b).ToList();
             return PartialView("_BlogGridPartial", model);
         }
 
