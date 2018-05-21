@@ -13,7 +13,7 @@ namespace Write.io.Models
     {
         [Required]
         [StringLength(32)]
-        public string Firstname {get; set; }
+        public string FirstName {get; set; }
 
         [Required]
         [StringLength(32)]
