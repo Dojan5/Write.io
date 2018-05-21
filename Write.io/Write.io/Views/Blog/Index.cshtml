@@ -1,0 +1,30 @@
+﻿@model Write.io.Models.BlogViewModel
+@{
+    Layout = "~/Views/Shared/_BlogLayout.cshtml";
+    var headerimage = "";
+    if (Model.Blog.BlogHeaderURL != null)
+    {
+        headerimage = "style=background-image:url(" + Model.Blog.BlogHeaderURL + ")";
+    }
+}
+
+<div class="BlogHeaderContainer">
+    <div id="BlogHeaderImage" @headerimage></div>
+    <div class="BlogHeader">
+        <div class="HeaderLeft">
+            <h1>@Model.Blog.Title</h1>
+        </div>
+        <div class="HeaderRight">
+            BLAH BLAH BLAH
+        </div>
+    </div>
+</div>
+
+<div class="BlogContainer">
+    <div id="BlogPostsContainer" class="PostsContainer">
+        @Html.Partial("_BlogPostListPartial", Model.Posts)
+    </div>
+    <div class="BlogSiderbarContainer">
+        @Html.Partial("_BlogSidebar", Model.User)
+    </div>
+</div>

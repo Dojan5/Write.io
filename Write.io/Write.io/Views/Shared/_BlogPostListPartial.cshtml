@@ -1,0 +1,18 @@
+﻿@model List<Write.io.Models.Post>
+
+<div class="PostListContainer">
+    @foreach (var post in Model)
+    {
+        <div class="PostListItem">
+            <div class="PostListHeader">
+                <h1>@post.Title</h1>
+            </div>
+            <div class="PostListBody">
+                <p>@post.Body</p>
+            </div>
+            <div class="PostListFooter">
+                @post.Created
+            </div>
+        </div>
+    }
+</div>

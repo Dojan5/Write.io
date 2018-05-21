@@ -1,4 +1,6 @@
-﻿#FrontPageSearchContainer {
+﻿/*Front page styling */
+
+#FrontPageSearchContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,4 +57,55 @@
     background-color: white;
     color: black;
     padding: 12px;
+}
+
+/* Blog page styling */
+
+.BlogHeaderContainer {
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+    top: 0; left: 0; right: 0;
+    height: 260px;
+}
+
+#BlogHeaderImage {
+    z-index: -1;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 110%;
+    height: 110%;
+    filter: blur(4px);
+    background: no-repeat;
+    background-size: cover;
+}
+
+.BlogHeader {
+    display: flex;
+    flex: 1;
+    margin-top: 150px;
+}
+
+.HeaderLeft {
+    padding: 18px;
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+.HeaderRight {
+    flex: 1;
+    background-color: rgba(0, 255, 0, 0.4);
+}
+
+.BlogContainer {
+    display: flex;
+    margin-top: 300px;
+}
+
+.PostsContainer {
+    background-color: red;
+}
+
+.BlogSiderbarContainer {
+    background-color: bisque;
 }

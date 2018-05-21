@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Write.io.Models;
 
 namespace Write.io.Controllers
 {
@@ -11,7 +12,9 @@ namespace Write.io.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            return View();
+            BlogViewModel model = new BlogViewModel();
+            model.Populate(1);
+            return View(model);
         }
     }
 }
