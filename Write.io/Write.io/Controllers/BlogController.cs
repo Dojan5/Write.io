@@ -13,7 +13,7 @@ namespace Write.io.Controllers
         public ActionResult Index()
         {
             BlogViewModel model = new BlogViewModel();
-            model.Populate(1);
+            model.Populate(2);
             return View(model);
         }
     }

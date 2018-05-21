@@ -1,5 +1,6 @@
 ﻿@model Write.io.Models.BlogViewModel
 @{
+    ViewBag.Title = Model.Blog.Title;
     Layout = "~/Views/Shared/_BlogLayout.cshtml";
     var headerimage = "";
     if (Model.Blog.BlogHeaderURL != null)
