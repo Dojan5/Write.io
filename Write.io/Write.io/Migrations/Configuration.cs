@@ -26,7 +26,7 @@ namespace Write.io.Migrations
                 var U1 = new ApplicationUser
                 {
                     FirstName = "Rytlock",
-                    LastName = "Brimstome",
+                    LastName = "Brimstone",
                     Email = "rytlock_brimstone@pact.com",
                     UserName = "rytlock_brimstone@pact.com"
                 };
