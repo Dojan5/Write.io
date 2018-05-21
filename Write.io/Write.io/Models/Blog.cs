@@ -9,6 +9,7 @@ namespace Write.io.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string BlogHeaderURL { get; set; }
         public string Body { get; set; }
         public DateTime Created { get; set; }
         public virtual ApplicationUser User {get; set; }

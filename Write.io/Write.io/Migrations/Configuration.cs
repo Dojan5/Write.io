@@ -49,6 +49,7 @@ namespace Write.io.Migrations
             {
                 Id = 1,
                 Title = "Adventures in the Mists",
+                BlogHeaderURL = "https://i.imgur.com/B1VNyDb.jpg",
                 Body = "Things I experienced during my travels in the mists.",
                 Created = DateTime.Now,
                 User = context.Users.SingleOrDefault(u => u.Email == "rytlock_brimstone@pact.com")                
