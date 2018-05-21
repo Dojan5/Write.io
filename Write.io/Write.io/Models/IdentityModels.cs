@@ -19,8 +19,9 @@ namespace Write.io.Models
         [StringLength(32)]
         public string LastName {get; set; }
 
-        public virtual ICollection<Comment> Comments {get; set; }
+        public virtual ICollection<Blog> Blogs {get; set; }
 
+        public virtual ICollection<Comment> Comments { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
