@@ -12,16 +12,18 @@
 
 <div class="BlogHeaderContainer">
     <div id="BlogHeaderImage" @headerimage></div>
+
     <div class="BlogHeader">
         <div class="HeaderLeft">
             <h1>@Model.Blog.Title</h1>
         </div>
-        <div class="HeaderRight">
-            BLAH BLAH BLAH
+ <div class="HeaderRight">
+            
+                <input id="BlogSearch" class="form-control" type="search" placeholder="Type here to search..." aria-label="Search" />
+     <button type="button" id="CreatePost" class="btn btn-secondary">Secondary</button>
+            </div>
         </div>
     </div>
-</div>
-
 <div class="BlogContainer">
     <div id="BlogPostsContainer" class="PostsContainer">
         @Html.Partial("_BlogPostListPartial", Model.Posts)
