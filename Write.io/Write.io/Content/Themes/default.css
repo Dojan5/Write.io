@@ -1,5 +1,6 @@
 ﻿:root {
-    --primary-bg-color: #FF00FF;
+    --primary-bg-color: steelblue;
+    --primary-color: #78c8f6;
 }
 
 /* Blog styling */
@@ -8,7 +9,9 @@
     display: flex;
     position: absolute;
     overflow: hidden;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 260px;
     background-color: rgba(255, 255, 255, 0.4);
 }
@@ -29,16 +32,20 @@
     display: flex;
     flex: 1;
     margin-top: 150px;
+    background-color: var(--primary-bg-color);
 }
 
 .HeaderLeft {
+    display: flex;
     padding: 18px;
-    background-color: rgba(255, 0, 0, 0.4);
+    background-color: steelblue;
 }
 
 .HeaderRight {
+    display: flex;
+    justify-content: flex-end;
     flex: 1;
-    background-color: rgba(0, 255, 0, 0.4);
+    background-color: var(--primary-bg-color);
 }
 
 .BlogContainer {
@@ -49,12 +56,33 @@
 
 .PostsContainer {
     background-color: red;
+    width: 75%;
 }
 
 .BlogSiderbarContainer {
     background-color: bisque;
+    width: 250px
 }
 
-#CreatePost{
+#BlogSearch {
+    width: 200px;
+    border-radius: 400px;
+    height: 48px;
+}
 
+#CreatePost {
+    height: 48px;
+    background-color: var(--primary-color);
+}
+
+.PostListItem {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    margin: 3px 3px 16px 3px;
+    height: 150px;
+}
+
+.PostListBody {
+    display: flex;
 }
