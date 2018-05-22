@@ -28,21 +28,24 @@ namespace Write.io.Migrations
                     FirstName = "Rytlock",
                     LastName = "Brimstone",
                     Email = "rytlock_brimstone@pact.com",
-                    UserName = "rytlock_brimstone@pact.com"
+                    UserName = "rytlock_brimstone@pact.com",
+                    Nickname = "Tribune"
                 };
                 var U2 = new ApplicationUser
                 {
                     FirstName = "Taimi",
                     LastName = "Genius",
                     Email = "taimi_and_scruffy@rata.nov",
-                    UserName = "taimi_and_scruffy@rata.nov"
+                    UserName = "taimi_and_scruffy@rata.nov",
+                    Nickname = "Taimi"
                 };
                 var U3 = new ApplicationUser
                 {
                     FirstName = "Logan",
                     LastName = "Thackeray",
                     Email = "logan_thackeray@divinitysreach.net",
-                    UserName = "logan_thackeray@divinitysreach.net"
+                    UserName = "logan_thackeray@divinitysreach.net",
+                    Nickname = "Seraph Thackeray"
                 };
 
                 manager.Create(U1, "P@ssword1");
