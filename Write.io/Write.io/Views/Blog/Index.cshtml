@@ -1,26 +1,10 @@
 ﻿@model Write.io.Models.BlogViewModel
 @{
     ViewBag.Title = Model.Blog.Title;
-    ViewBag.Template = Model.Blog.Template + ".css";
+    ViewBag.Model = Model;
     Layout = "~/Views/Shared/_BlogLayout.cshtml";
-    var headerimage = "";
-    if (Model.Blog.BlogHeaderURL != null)
-    {
-        headerimage = "style=background-image:url(" + Model.Blog.BlogHeaderURL + ")";
-    }
+    ViewBag.Archive = Model.PostArchive;
 }
-
-<div class="BlogHeaderContainer">
-    <div id="BlogHeaderImage" @headerimage></div>
-    <div class="BlogHeader">
-        <div class="HeaderLeft">
-            <h1>@Model.Blog.Title</h1>
-        </div>
-        <div class="HeaderRight">
-            BLAH BLAH BLAH
-        </div>
-    </div>
-</div>
 
 <div class="BlogContainer">
     <div id="BlogPostsContainer" class="PostsContainer">
@@ -30,3 +14,4 @@
         @Html.Partial("_BlogSidebar", Model.User)
     </div>
 </div>
+

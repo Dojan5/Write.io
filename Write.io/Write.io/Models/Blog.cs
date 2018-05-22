@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,12 +23,22 @@ namespace Write.io.Models
         public ApplicationUser User { get; set; }
         public Blog Blog { get; set; }
         public List<Post> Posts { get; set; } = new List<Post>();
+        public List<int> PostArchive {get; set; }
 
-        public void Populate(int BlogID)
+        public bool Populate(string Nickname, string BlogTitle)
         {
-            this.Blog = db.Blogs.Where(b => b.Id == BlogID).Select(b => b).FirstOrDefault();
-            this.User = this.Blog.User;
-            this.Posts = db.Posts.Where(p => p.BlogId == BlogID).Select(b => b).ToList();
+            if (db.Blogs.Any(b => b.Title == BlogTitle) && db.Users.Any(u => u.Nickname == Nickname))
+            {
+                this.Blog = db.Blogs.Where(b => b.User.Nickname == Nickname && b.Title == BlogTitle).Select(b => b).FirstOrDefault();
+                this.Posts = db.Posts.Where(p => p.BlogId == this.Blog.Id).Select(p => p).ToList();
+                this.User = this.Blog.User;
+                this.PostArchive = db.Posts.Where (p => p.BlogId == this.Blog.Id).DistinctBy(p => p.Created.Year).Select(p => p.Created.Year).ToList();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
     public class BlogPostViewModel
