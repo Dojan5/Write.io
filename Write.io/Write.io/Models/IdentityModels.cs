@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Write.io.Models
 {
@@ -18,6 +19,9 @@ namespace Write.io.Models
         [Required]
         [StringLength(32)]
         public string LastName {get; set; }
+
+        [Required, StringLength(32), Index("NickName", IsUnique = true)]
+        public string Nickname { get; set; }
 
         public virtual ICollection<Blog> Blogs {get; set; }
 
