@@ -1,4 +1,8 @@
-﻿/* Blog styling */
+﻿:root {
+    --primary-bg-color: #FF00FF;
+}
+
+/* Blog styling */
 
 .BlogHeaderContainer {
     display: flex;
