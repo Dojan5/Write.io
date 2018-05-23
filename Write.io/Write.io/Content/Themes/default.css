@@ -3,6 +3,7 @@
     --secondary-color: #2189AD;
     --primary-accent: #665F7B;
     --secondary-accent: #68647A;
+    --background-color: #FFFFFF;
     --dark-text: #1B171D;
     --light-text: #FFFFFF;
 
@@ -11,6 +12,7 @@
 /* Blog styling */
 
 body {
+    background-color: var(--background-color);
     color: var(--dark-text);
 }
 
@@ -66,26 +68,6 @@ nav {
     display: flex;
     justify-content: space-around;
     margin-top: 300px;
-}
-
-#BlogSearch {
-    width: 200px;
-    border-radius: 400px;
-    height: 38px;
-}
-
-#CreatePost {
-    height: 38px;
-    background-color: var(--primary-color);
-}
-
-#BlogUserIcon {
-    width: 64px;
-    height: 64px;
-    border: 2px solid;
-    border-radius: 4px;
-    background-color: var(--primary-color);
-    margin-left: 32px;
 }
 
 /* List of Blog Posts */
