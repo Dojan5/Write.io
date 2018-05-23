@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +11,7 @@ namespace Write.io.Controllers
 {
     public class BlogController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         // GET: Blog
         //This uses something called "Attribute Routing" which needs to be enabled in the RouteConfig.cs file
         [Route("b/{Nickname}/{BlogTitle}/")]
@@ -23,6 +26,13 @@ namespace Write.io.Controllers
             {
                 throw new HttpException(404, "The blog could not be found.");
             }            
+        }
+        
+        [Route("b/{Nickname}/{BlogTitle}/CreatePost")]
+        public ActionResult CreatePost(string Nickname, string BlogTitle)
+        {
+            string UserID = User.Identity.GetUserId();
+            return View();
         }
     }
 }
