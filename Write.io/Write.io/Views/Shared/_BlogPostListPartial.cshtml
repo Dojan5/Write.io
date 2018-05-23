@@ -3,16 +3,31 @@
 <div class="PostListContainer">
     @foreach (var post in Model)
     {
+        var date = post.Created;
         <div class="PostListItem">
             <div class="PostListHeader">
-                <h1>@post.Title</h1>
+                <div class="PostListHeaderTitle">
+                    @post.Title
+                </div>
+                <div class="PostListHeaderDate">
+                    <div class="HeaderDate">
+                        16
+                    </div>
+                    <div class="HeaderMonth">
+                        Jan
+                    </div>
+                    <div class="HeaderYear">
+                        2017
+                    </div>
+                </div>
+            </div>
+            <div class="PostListSubheader">
+                @post.Blog.User.Nickname | 
             </div>
             <div class="PostListBody">
-                <p>@post.Body</p>
+                @post.Body
             </div>
-            <div class="PostListFooter">
-                @post.Created
-            </div>
+            <div class="Divider"></div>
         </div>
     }
 </div>

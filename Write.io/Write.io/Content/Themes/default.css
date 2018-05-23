@@ -14,6 +14,7 @@
     right: 0;
     height: 260px;
     background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.4);
 }
 
 #BlogHeaderImage {
@@ -28,24 +29,41 @@
     background-size: cover;
 }
 
+#BlogHeaderSiteLogo {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 72px;
+    width: 124px;
+}
+
+#BlogHeaderSiteLogo a {
+    text-decoration: none;
+    color: black;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    padding: 8px;
+}
+
 .BlogHeader {
     display: flex;
     flex: 1;
+    align-items: center;
     margin-top: 150px;
-    background-color: var(--primary-bg-color);
 }
 
 .HeaderLeft {
     display: flex;
     padding: 18px;
-    background-color: steelblue;
 }
 
 .HeaderRight {
     display: flex;
     justify-content: flex-end;
     flex: 1;
-    background-color: var(--primary-bg-color);
+    align-items: center;
+    padding-right: 64px;
 }
 
 .BlogContainer {
@@ -55,34 +73,101 @@
 }
 
 .PostsContainer {
-    background-color: red;
     width: 75%;
 }
 
 .BlogSiderbarContainer {
     background-color: bisque;
-    width: 250px
+    width: 250px;
 }
 
 #BlogSearch {
     width: 200px;
     border-radius: 400px;
-    height: 48px;
+    height: 38px;
 }
 
 #CreatePost {
-    height: 48px;
+    height: 38px;
     background-color: var(--primary-color);
 }
 
-.PostListItem {
+#BlogUserIcon {
+    width: 64px;
+    height: 64px;
+    border: 2px solid;
+    border-radius: 4px;
     background-color: var(--primary-color);
+    margin-left: 32px;
+}
+
+/* List of Blog Posts */
+
+.PostListContainer {
+}
+
+.PostListItem {
+    /*background-color: var(--primary-color);*/
     display: flex;
     flex-direction: column;
-    margin: 3px 3px 16px 3px;
-    height: 150px;
+    margin: 3px 3px 32px 3px;
+    box-shadow: 3px -3px 16px 1px rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+.PostListHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PostListHeaderTitle {
+    flex: 1;
+    margin: 0px 0px 0px 16px;
+    font-size: 32px;
+}
+
+.PostListHeaderDate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    width: 64px;
+}
+
+.HeaderDate {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.HeaderMonth {
+    text-transform: uppercase;
+    font-size: 14px;
+
+}
+
+.HeaderYear {
+    font-size: 12px;
+
+}
+
+.PostListSubheader {
+    display: flex;
+    box-shadow: inset 0px 0px 16px 1px rgba(0,0,0,0.1);
+    align-items: center;
+    padding: 4px 4px 4px 16px;
+
 }
 
 .PostListBody {
     display: flex;
+    padding: 16px 16px 16px 36px;
+    flex: 1;
+}
+
+.Divider {
+    height: 2px;
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+    margin: 0px 32px 0px 32px;
 }
