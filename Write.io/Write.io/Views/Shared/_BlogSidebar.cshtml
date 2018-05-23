@@ -1,13 +1,18 @@
 ﻿@model Write.io.Models.ApplicationUser
 
-
-<div class="SideBarPortrait">.</div>
-<div>@Model.Nickname</div>
-<div>Vestibulum nec tellus et augue luctus aliquam. Nulla facilisi. Etiam semper metus sed tortor aliquet placerat. Cras est arcu, egestas vitae justo cursus, tincidunt porta nunc. Mauris placerat lobortis nulla ut venenatis. </div>
-<hr />
-<ul>
-    @foreach (var item in ViewBag.Archive)
-    {
-        <li>@item</li>
-    }
-</ul>
+<div class="BlogSidebar">
+    <div class="SideBarPortrait"></div>
+    <div class="BlogSidebarUserContainer">
+        <div class="SidebarUsername">@Model.Nickname</div>
+        <div class="SidebarUserPresentation">Vestibulum nec tellus et augue luctus aliquam. Nulla facilisi. Etiam semper metus sed tortor aliquet placerat. Cras est arcu, egestas vitae justo cursus, tincidunt porta nunc. Mauris placerat lobortis nulla ut venenatis. </div>
+    </div>
+    <div class="Divider"></div>
+    <div class="BlogSidebarControls">
+        <ul>
+            @foreach (var item in ViewBag.Archive)
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+</div>
