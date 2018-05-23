@@ -134,11 +134,12 @@
     align-items: center;
     background-color: var(--primary-color);
     width: 64px;
+    padding: 0;
 }
 
 .HeaderDate {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .HeaderMonth {
@@ -156,8 +157,13 @@
     display: flex;
     box-shadow: inset 0px 0px 16px 1px rgba(0,0,0,0.1);
     align-items: center;
+    align-content: center;
     padding: 4px 4px 4px 16px;
 
+}
+
+.PostListSubheader i {
+    font-size: 12px;
 }
 
 .PostListBody {
