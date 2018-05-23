@@ -18,22 +18,31 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Write.IO <i class="fas fa-pencil-alt"></i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("My Blogs", "Index", "User", null, new { @class = "nav-link" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
     <div class="container-fluid body-content">
         <div class="BlogHeaderContainer">
             <div id="BlogHeaderImage" @headerimage></div>
-            <div id="BlogHeaderSiteLogo">
-                @Html.ActionLink("Write.IO", "Index", "Home")
-            </div>
-            <div class="BlogHeader">
-                <div class="HeaderLeft">
-                    <h1>@Model.Blog.Title</h1>
+            <div class="BlogHeaderContents">
+                <div class="BlogTitle">
+                    <h1>@ViewBag.Model.Blog.Title</h1>
                 </div>
-                <div class="HeaderRight">
-                    <button type="button" id="CreatePost" class="btn btn-secondary"><i class="fa fa-plus">&nbsp;</i>Create Post</button>
-                    <input id="BlogSearch" class="form-control" type="search" placeholder="Type here to search..." aria-label="Search" />
-                    <div id="BlogUserIcon">
-
-                    </div>
+                <div class="BlogControllers">
+                    <button type="button" class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Write Post</button>
                 </div>
             </div>
         </div>

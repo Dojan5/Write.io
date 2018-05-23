@@ -6,11 +6,11 @@
     ViewBag.Archive = Model.PostArchive;
 }
 
-<div class="BlogContainer">
-    <div id="BlogPostsContainer" class="PostsContainer">
+<div class="BlogContainer row">
+    <div id="BlogPostsContainer" class="PostsContainer col-12 col-lg-9">
         @Html.Partial("_BlogPostListPartial", Model.Posts)
     </div>
-    <div class="BlogSiderbarContainer">
+    <div class="BlogSiderbarContainer col-12 col-lg-3">
         @Html.Partial("_BlogSidebar", Model.User)
     </div>
 </div>
