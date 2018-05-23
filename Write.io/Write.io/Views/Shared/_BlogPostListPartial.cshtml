@@ -3,7 +3,12 @@
 <div class="PostListContainer">
     @foreach (var post in Model)
     {
-        var date = post.Created;
+        var PostYear = post.Created.Year.ToString();
+        //Creates an array of months
+        string[] Months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+        //Returns item from array, index is pulled based on month -1 as the array starts counting at 0 but months start at 1
+        var PostMonth = Months[post.Created.Month-1];
+        var PostDate = post.Created.Day.ToString();
         <div class="PostListItem">
             <div class="PostListHeader">
                 <div class="PostListHeaderTitle">
@@ -11,13 +16,13 @@
                 </div>
                 <div class="PostListHeaderDate">
                     <div class="HeaderDate">
-                        16
+                        @PostDate
                     </div>
                     <div class="HeaderMonth">
-                        Jan
+                        @PostMonth
                     </div>
                     <div class="HeaderYear">
-                        2017
+                        @PostYear
                     </div>
                 </div>
             </div>
