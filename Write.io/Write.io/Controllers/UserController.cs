@@ -8,19 +8,20 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 
+
 namespace Write.io.Controllers
 {
 
     [Authorize]
     public class UserController : Controller
     {
-
         ApplicationDbContext db = new ApplicationDbContext();
-
+        
 
         public ActionResult Index()
         {
-            var loggedInUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var loggedInUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+                               .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
             var model = db.Blogs.Where(b => b.User.UserName.Equals(loggedInUser.UserName))
                         .OrderByDescending(b => b.Created).ToList();
@@ -40,13 +41,30 @@ namespace Write.io.Controllers
         }
 
 
+        [HttpGet]
         public ActionResult EditBlog(int id)
         {
             Blog obj = db.Blogs.Where(b => b.Id.Equals(id)).SingleOrDefault();
 
-            return RedirectToAction("Index");
+            return View(obj);
         }
 
+        [HttpPost]
+        public ActionResult EditBlog(Blog blog)
+        {
+            var rows = db.Blogs.Where(b => b.Id.Equals(blog.Id));
 
+            foreach (Blog row in rows)
+            {
+                row.Title = blog.Title;
+                row.BlogHeaderURL = blog.BlogHeaderURL;
+                row.Body = blog.Body;
+                row.Template = blog.Template;
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
