@@ -191,6 +191,10 @@ nav {
     height: 144px;
 }
 
+.SideBarPortrait img {
+    width: 100%;
+}
+
 .BlogSidebarUserContainer {
     display: flex;
     flex-direction: column;
