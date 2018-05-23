@@ -29,7 +29,8 @@ namespace Write.io.Migrations
                     LastName = "Brimstone",
                     Email = "rytlock_brimstone@pact.com",
                     UserName = "rytlock_brimstone@pact.com",
-                    Nickname = "Tribune"
+                    Nickname = "Tribune Brimstone",
+                    AvatarURL = "https://i.imgur.com/kTQ0SZd.jpg"
                 };
                 var U2 = new ApplicationUser
                 {
@@ -37,7 +38,8 @@ namespace Write.io.Migrations
                     LastName = "Genius",
                     Email = "taimi_and_scruffy@rata.nov",
                     UserName = "taimi_and_scruffy@rata.nov",
-                    Nickname = "Taimi"
+                    Nickname = "Taimi",
+                    AvatarURL = "https://i.imgur.com/htRaUlg.jpg"
                 };
                 var U3 = new ApplicationUser
                 {
