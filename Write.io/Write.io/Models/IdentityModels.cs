@@ -23,6 +23,8 @@ namespace Write.io.Models
         [Required, StringLength(32), Index("NickName", IsUnique = true)]
         public string Nickname { get; set; }
 
+        public string AvatarURL { get; set; }
+
         public virtual ICollection<Blog> Blogs {get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
