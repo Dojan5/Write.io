@@ -28,7 +28,7 @@ nav {
     right: 0;
     height: 290px;
     background-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 16px 1px var(--secondary-accent);
 }
 
 #BlogHeaderImage {
@@ -95,7 +95,7 @@ nav {
     display: flex;
     flex-direction: column;
     margin: 3px 3px 32px 3px;
-    box-shadow: 3px -3px 16px 1px rgba(0,0,0,0.2);
+    box-shadow: 2px -2px 16px -4px var(--secondary-accent);
     overflow: hidden;
     border-radius: 3px;
 }
@@ -174,7 +174,7 @@ nav {
     margin-top: 50px;
     margin-right: 16px;
     border-radius: 4px;
-    box-shadow: 0px -3px 16px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px -3px 16px -4px var(--secondary-accent);
     padding: 8px;
 }
 
@@ -185,7 +185,7 @@ nav {
     transform: translateX(-50%);
     background-color: white;
     overflow: hidden;
-    box-shadow: 0px -3px 16px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px -3px 8px -2px var(--secondary-accent);
     border-radius: 9000px;
     width: 144px;
     height: 144px;
