@@ -9,6 +9,15 @@
     $("#FrontpageSearch").on('keydown', function () {
         clearTimeout(FPtypingTimer);
     });
+    //Script handling the search function in the blog
+    $('#BlogSearchbar').on('keypress', function (e) {
+        if (e.which === 13) {
+            var URL = $(this).data('url');
+            var Query = $(this).val();
+            window.location.href = URL + Query;
+            
+        }
+    });
 });
 
 //Front-page search function

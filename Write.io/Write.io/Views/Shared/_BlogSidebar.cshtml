@@ -19,6 +19,9 @@
     </div>
     <div class="Divider"></div>
     <div class="BlogSidebarControls">
+        <div class="BlogSearch">
+            <input id="BlogSearchbar" data-URL="@ViewBag.BlogURL/S/" class="form-control" type="search" placeholder="Search" aria-label="Search">
+        </div>
         <ul>
             @foreach (var item in ViewBag.Archive)
             {

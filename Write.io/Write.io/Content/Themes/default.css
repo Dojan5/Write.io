@@ -320,3 +320,21 @@ nav {
 .BlogSidebarControls {
     margin-top: 16px;
 }
+
+.BlogSearch {
+    display:flex;
+    justify-content: center;
+}
+
+#BlogSearchbar {
+    align-self: center;
+    margin-bottom: 8px;
+    border-radius: 64px;
+    width: 80%;
+}
+
+#BlogSearchbar:focus {
+    border: 1px solid;
+    border-color: var(--primary-color);
+    box-shadow: 0px 0px 8px 1px var(--primary-color);
+}
