@@ -1,0 +1,16 @@
+﻿@model Write.io.Models.BlogPostViewModel
+@{
+    ViewBag.Title = Model.Post.Title;
+    ViewBag.Model = Model;
+    Layout = "~/Views/Shared/_BlogLayout.cshtml";
+    ViewBag.Archive = Model.PostArchive;
+}
+
+<div class="BlogContainer row">
+    <div id="BlogPostsContainer" class="PostsContainer col-12 col-lg-9">
+        @Html.Partial("_BlogPostPartial", Model.Post)
+    </div>
+    <div class="BlogSiderbarContainer col-12 col-lg-3">
+        @Html.Partial("_BlogSidebar", Model.User)
+    </div>
+</div>

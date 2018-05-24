@@ -325,6 +325,8 @@
     <Content Include="Views\Shared\_BlogSidebar.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_BlogGridPartialUser.cshtml" />
+    <Content Include="Views\Blog\ViewPost.cshtml" />
+    <Content Include="Views\Shared\_BlogPostPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

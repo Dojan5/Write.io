@@ -12,7 +12,7 @@
         <div class="PostListItem">
             <div class="PostListHeader">
                 <div class="PostListHeaderTitle">
-                    @post.Title
+                    <a class="BlogPostLink" href="/b/@post.Blog.User.Nickname/@post.Blog.Title/@post.Id-@post.Title">@post.Title</a>
                 </div>
                 <div class="PostListHeaderDate">
                     <div class="HeaderDate">
@@ -27,7 +27,12 @@
                 </div>
             </div>
             <div class="PostListSubheader">
-                <i class="fa fa-user" aria-hidden="true">&nbsp;</i>@post.Blog.User.Nickname&nbsp;|&nbsp; <i class="fa fa-tag" aria-hidden="true"></i>
+                <div class="SubheaderLeft">
+                    <i class="fa fa-user" aria-hidden="true">&nbsp;</i>@post.Blog.User.Nickname&nbsp;|&nbsp; <i class="fa fa-tag" aria-hidden="true"></i>
+                </div>
+                <div class="SubheaderRight">
+                    <i class="fa fa-comments" aria-hidden="true">&nbsp;</i>@post.Comments.Count()
+                </div>
             </div>
             <div class="PostListBody">
                 @post.Body

@@ -34,5 +34,13 @@ namespace Write.io.Controllers
             string UserID = User.Identity.GetUserId();
             return View();
         }
+
+        [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}")]
+        public ActionResult ViewPost(string Nickname, string BlogTitle, int PostID, string PostTitle)
+        {
+            BlogPostViewModel model = new BlogPostViewModel();
+            model.Populate(Nickname, BlogTitle, PostID, PostTitle);
+            return PartialView("ViewPost", model);
+        }
     }
 }

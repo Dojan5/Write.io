@@ -1,0 +1,127 @@
+﻿@model Write.io.Models.Post
+@{
+    var PostYear = Model.Created.Year.ToString();
+    //Creates an array of months
+    string[] Months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+    //Returns item from array, index is pulled based on month -1 as the array starts counting at 0 but months start at 1
+    var PostMonth = Months[Model.Created.Month - 1];
+    var PostDate = Model.Created.Day.ToString();
+}
+
+<div class="BlogPostContainer">
+    <div class="PostListItem">
+        <div class="PostListHeader">
+            <div class="PostListHeaderTitle">
+                @Model.Title
+            </div>
+            <div class="PostListHeaderDate">
+                <div class="HeaderDate">
+                    @PostDate
+                </div>
+                <div class="HeaderMonth">
+                    @PostMonth
+                </div>
+                <div class="HeaderYear">
+                    @PostYear
+                </div>
+            </div>
+        </div>
+        <div class="PostListSubheader">
+            <div class="SubheaderLeft">
+                <i class="fa fa-user" aria-hidden="true">&nbsp;</i>@Model.Blog.User.Nickname&nbsp;|&nbsp; <i class="fa fa-tag" aria-hidden="true"></i>
+            </div>
+            <div class="SubheaderRight">
+                <i class="fa fa-comments" aria-hidden="true">&nbsp;</i>@Model.Comments.Count()
+            </div>
+        </div>
+        <div class="PostListBody">
+            @Model.Body
+        </div>
+        <div class="Divider"></div>
+    </div>
+    <h2>Comments</h2>
+    <div class="BlogPostCommentContainer">
+        <div class="CommentItem">
+            <div class="CommentUser">
+                <div class="CommentUserPortrait">
+                    <img src="https://i.imgur.com/wGrusHs.jpg" />
+                </div>
+                <div class="CommentUserName">
+                    Fluffy
+                </div>
+            </div>
+            <div class="CommentBody">
+                <div class="CommentText">
+                    Oh my goose! This post is so relatable! We must be like, kindred spirits or something! Proin facilisis mauris sit amet est volutpat, in ultrices urna aliquam. Fusce non ligula eros. Praesent a nunc gravida metus imperdiet euismod. Phasellus et luctus mi. Pellentesque in fermentum diam. Quisque malesuada elit vitae sem finibus tempor. Sed ultricies sit amet libero dictum scelerisque. Proin eget semper ex.
+                </div>
+                <div class="CommentDate">
+                    <div class="HeaderDate">
+                        11
+                    </div>
+                    <div class="HeaderMonth">
+                        Jan
+                    </div>
+                    <div class="HeaderYear">
+                        2016
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="CommentItem">
+            <div class="CommentUser">
+                <div class="CommentUserPortrait">
+                    <img src="https://i.imgur.com/wGrusHs.jpg" />
+                </div>
+                <div class="CommentUserName">
+                    Fluffy
+                </div>
+            </div>
+            <div class="CommentBody">
+                <div class="CommentText">
+                    Oh my goose! This post is so relatable! We must be like, kindred spirits or something! Proin facilisis mauris sit amet est volutpat, in ultrices urna aliquam. Fusce non ligula eros. Praesent a nunc gravida metus imperdiet euismod. Phasellus et luctus mi. Pellentesque in fermentum diam. Quisque malesuada elit vitae sem finibus tempor. Sed ultricies sit amet libero dictum scelerisque. Proin eget semper ex.
+                </div>
+                <div class="CommentDate">
+                    <div class="HeaderDate">
+                        11
+                    </div>
+                    <div class="HeaderMonth">
+                        Jan
+                    </div>
+                    <div class="HeaderYear">
+                        2016
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="CommentItem">
+            <div class="CommentUser">
+                <div class="CommentUserPortrait">
+                    <img src="https://i.imgur.com/wGrusHs.jpg" />
+                </div>
+                <div class="CommentUserName">
+                    Fluffy
+                </div>
+            </div>
+            <div class="CommentBody">
+                <div class="CommentText">
+                    Oh my goose! This post is so relatable! We must be like, kindred spirits or something! Proin facilisis mauris sit amet est volutpat, in ultrices urna aliquam. Fusce non ligula eros. Praesent a nunc gravida metus imperdiet euismod. Phasellus et luctus mi. Pellentesque in fermentum diam. Quisque malesuada elit vitae sem finibus tempor. Sed ultricies sit amet libero dictum scelerisque. Proin eget semper ex.
+                </div>
+                <div class="CommentDate">
+                    <div class="HeaderDate">
+                        11
+                    </div>
+                    <div class="HeaderMonth">
+                        Jan
+                    </div>
+                    <div class="HeaderYear">
+                        2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
