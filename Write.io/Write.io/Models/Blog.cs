@@ -70,6 +70,9 @@ namespace Write.io.Models
                 if (db.Posts.Any(p => p.Title == PostTitle && p.Id == PostID && p.BlogId == this.Blog.Id))
                 {
                     this.Post = db.Posts.Where(p => p.Id == PostID && p.Title == PostTitle && p.BlogId == this.Blog.Id).Select(p => p).FirstOrDefault();
+                    //Increments views by one
+                    this.Post.Views++;
+                    db.SaveChanges();
                     return true;
                 }
                 else
