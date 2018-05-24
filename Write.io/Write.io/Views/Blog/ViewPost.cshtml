@@ -1,6 +1,6 @@
-﻿@model Write.io.Models.BlogViewModel
+﻿@model Write.io.Models.BlogPostViewModel
 @{
-    ViewBag.Title = Model.Blog.Title;
+    ViewBag.Title = Model.Post.Title;
     ViewBag.Model = Model;
     ViewBag.BlogURL = "/b/" + Model.User.Nickname + "/" + Model.Blog.Title;
     Layout = "~/Views/Shared/_BlogLayout.cshtml";
@@ -9,10 +9,9 @@
 
 <div class="BlogContainer row">
     <div id="BlogPostsContainer" class="PostsContainer col-12 col-lg-9">
-        @Html.Partial("_BlogPostListPartial", Model.Posts)
+        @Html.Partial("_BlogPostPartial", Model.Post)
     </div>
     <div class="BlogSiderbarContainer col-12 col-lg-3">
         @Html.Partial("_BlogSidebar", Model.User)
     </div>
 </div>
-

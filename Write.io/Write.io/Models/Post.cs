@@ -13,6 +13,7 @@ namespace Write.io.Models
         public string Body { get; set; }
         public DateTime Created { get; set; }
         public int Views { get; set; }
+
         public virtual Blog Blog { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }

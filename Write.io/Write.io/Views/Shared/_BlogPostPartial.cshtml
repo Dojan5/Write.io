@@ -1,0 +1,83 @@
+﻿@model Write.io.Models.Post
+@{
+    var PostYear = Model.Created.Year.ToString();
+    //Creates an array of months
+    string[] Months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+    //Returns item from array, index is pulled based on month -1 as the array starts counting at 0 but months start at 1
+    var PostMonth = Months[Model.Created.Month - 1];
+    var PostDate = Model.Created.Day.ToString();
+}
+
+<div class="BlogPostContainer">
+    <div class="PostListItem">
+        <div class="PostListHeader">
+            <div class="PostListHeaderTitle">
+                <a class="BlogPostLink" href="/b/@Model.Blog.User.Nickname/@Model.Blog.Title/@Model.Id-@Model.Title">@Model.Title</a>
+            </div>
+            <div class="PostListHeaderDate">
+                <div class="HeaderDate">
+                    @PostDate
+                </div>
+                <div class="HeaderMonth">
+                    @PostMonth
+                </div>
+                <div class="HeaderYear">
+                    @PostYear
+                </div>
+            </div>
+        </div>
+        <div class="PostListSubheader">
+            <div class="SubheaderLeft">
+                <i class="fa fa-user" aria-hidden="true">&nbsp;</i>@Model.Blog.User.Nickname&nbsp;|&nbsp;
+                <i class="fa fa-tag" aria-hidden="true"></i> @foreach (var tag in Model.Tags)
+                {
+                    <a href="#">@tag.Name</a>
+                }
+            </div>
+            <div class="SubheaderRight">
+                <i class="fa fa-comments" aria-hidden="true">&nbsp;</i>@Model.Comments.Count()
+            </div>
+        </div>
+        <div class="PostListBody">
+            @Model.Body
+        </div>
+        <div class="Divider"></div>
+    </div>
+    <h2>Comments</h2>
+    <div class="BlogPostCommentContainer">
+        @foreach (var comment in Model.Comments)
+        {
+            var CommentYear = comment.created.Year.ToString();
+            //Creates an array of months
+            //Returns item from array, index is pulled based on month -1 as the array starts counting at 0 but months start at 1
+            var CommentMonth = Months[comment.created.Month - 1];
+            var CommentDate = comment.created.Day.ToString();
+            <div class="CommentItem">
+                <div class="CommentUser">
+                    <div class="CommentUserPortrait">
+                        <img src="@comment.User.AvatarURL" />
+                    </div>
+                    <div class="CommentUserName">
+                        @comment.User.Nickname
+                    </div>
+                </div>
+                <div class="CommentBody">
+                    <div class="CommentText">
+                        @comment.body
+                    </div>
+                    <div class="CommentDate">
+                        <div class="HeaderDate">
+                            @CommentDate
+                        </div>
+                        <div class="HeaderMonth">
+                            @CommentMonth
+                        </div>
+                        <div class="HeaderYear">
+                            @CommentYear
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
