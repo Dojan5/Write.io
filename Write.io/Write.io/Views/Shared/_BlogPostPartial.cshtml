@@ -43,6 +43,11 @@
     <div class="BlogPostCommentContainer">
         @foreach (var comment in Model.Comments)
         {
+            var CommentYear = comment.created.Year.ToString();
+            //Creates an array of months
+            //Returns item from array, index is pulled based on month -1 as the array starts counting at 0 but months start at 1
+            var CommentMonth = Months[comment.created.Month - 1];
+            var CommentDate = comment.created.Day.ToString();
             <div class="CommentItem">
                 <div class="CommentUser">
                     <div class="CommentUserPortrait">
@@ -58,72 +63,18 @@
                     </div>
                     <div class="CommentDate">
                         <div class="HeaderDate">
-                            11
+                            @CommentDate
                         </div>
                         <div class="HeaderMonth">
-                            Jan
+                            @CommentMonth
                         </div>
                         <div class="HeaderYear">
-                            2016
+                            @CommentYear
                         </div>
                     </div>
                 </div>
             </div>
         }
-
-        <div class="CommentItem">
-            <div class="CommentUser">
-                <div class="CommentUserPortrait">
-                    <img src="https://i.imgur.com/wGrusHs.jpg" />
-                </div>
-                <div class="CommentUserName">
-                    Fluffy
-                </div>
-            </div>
-            <div class="CommentBody">
-                <div class="CommentText">
-                    Oh my goose! This post is so relatable! We must be like, kindred spirits or something! Proin facilisis mauris sit amet est volutpat, in ultrices urna aliquam. Fusce non ligula eros. Praesent a nunc gravida metus imperdiet euismod. Phasellus et luctus mi. Pellentesque in fermentum diam. Quisque malesuada elit vitae sem finibus tempor. Sed ultricies sit amet libero dictum scelerisque. Proin eget semper ex.
-                </div>
-                <div class="CommentDate">
-                    <div class="HeaderDate">
-                        11
-                    </div>
-                    <div class="HeaderMonth">
-                        Jan
-                    </div>
-                    <div class="HeaderYear">
-                        2016
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="CommentItem">
-            <div class="CommentUser">
-                <div class="CommentUserPortrait">
-                    <img src="https://i.imgur.com/wGrusHs.jpg" />
-                </div>
-                <div class="CommentUserName">
-                    Fluffy
-                </div>
-            </div>
-            <div class="CommentBody">
-                <div class="CommentText">
-                    Oh my goose! This post is so relatable! We must be like, kindred spirits or something! Proin facilisis mauris sit amet est volutpat, in ultrices urna aliquam. Fusce non ligula eros. Praesent a nunc gravida metus imperdiet euismod. Phasellus et luctus mi. Pellentesque in fermentum diam. Quisque malesuada elit vitae sem finibus tempor. Sed ultricies sit amet libero dictum scelerisque. Proin eget semper ex.
-                </div>
-                <div class="CommentDate">
-                    <div class="HeaderDate">
-                        11
-                    </div>
-                    <div class="HeaderMonth">
-                        Jan
-                    </div>
-                    <div class="HeaderYear">
-                        2016
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
