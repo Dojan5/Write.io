@@ -23,10 +23,37 @@ namespace Write.io.Controllers
             var loggedInUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
                                .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
-            var model = db.Blogs.Where(b => b.User.UserName.Equals(loggedInUser.UserName))
-                        .OrderByDescending(b => b.Created).ToList();
+            var model = db.Blogs.Where(b => b.User.UserName.Equals(loggedInUser.UserName)).ToList();
 
             return View(model);
+        }
+
+
+        [HttpGet]
+        public ActionResult AddBlog()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddBlog(Blog obj)
+        {
+            var loggedInUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
+                               .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            obj.User = loggedInUser;
+
+            obj.Created = DateTime.Now;
+
+            //if (ModelState.IsValid)
+            //{
+            db.Blogs.Add(obj);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+            //}
+            //return View(obj);
+
         }
 
 
@@ -50,21 +77,22 @@ namespace Write.io.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditBlog(Blog blog)
+        public ActionResult EditBlog(Blog obj)
         {
-            var rows = db.Blogs.Where(b => b.Id.Equals(blog.Id));
+            var row = db.Blogs.Where(b => b.Id.Equals(obj.Id)).FirstOrDefault();
 
-            foreach (Blog row in rows)
+            if (ModelState.IsValid)
             {
-                row.Title = blog.Title;
-                row.BlogHeaderURL = blog.BlogHeaderURL;
-                row.Body = blog.Body;
-                row.Template = blog.Template;
+                row.Title = obj.Title;
+                row.BlogHeaderURL = obj.BlogHeaderURL;
+                row.Body = obj.Body;
+                row.Template = obj.Template;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
             }
-
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
+            return View(obj);
         }
     }
 }
