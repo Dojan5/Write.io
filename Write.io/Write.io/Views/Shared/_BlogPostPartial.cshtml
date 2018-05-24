@@ -41,32 +41,35 @@
     </div>
     <h2>Comments</h2>
     <div class="BlogPostCommentContainer">
-        <div class="CommentItem">
-            <div class="CommentUser">
-                <div class="CommentUserPortrait">
-                    <img src="https://i.imgur.com/wGrusHs.jpg" />
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="CommentItem">
+                <div class="CommentUser">
+                    <div class="CommentUserPortrait">
+                        <img src="@comment.User.AvatarURL" />
+                    </div>
+                    <div class="CommentUserName">
+                        @comment.User.Nickname
+                    </div>
                 </div>
-                <div class="CommentUserName">
-                    Fluffy
+                <div class="CommentBody">
+                    <div class="CommentText">
+                        @comment.body
+                    </div>
+                    <div class="CommentDate">
+                        <div class="HeaderDate">
+                            11
+                        </div>
+                        <div class="HeaderMonth">
+                            Jan
+                        </div>
+                        <div class="HeaderYear">
+                            2016
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="CommentBody">
-                <div class="CommentText">
-                    Oh my goose! This post is so relatable! We must be like, kindred spirits or something! Proin facilisis mauris sit amet est volutpat, in ultrices urna aliquam. Fusce non ligula eros. Praesent a nunc gravida metus imperdiet euismod. Phasellus et luctus mi. Pellentesque in fermentum diam. Quisque malesuada elit vitae sem finibus tempor. Sed ultricies sit amet libero dictum scelerisque. Proin eget semper ex.
-                </div>
-                <div class="CommentDate">
-                    <div class="HeaderDate">
-                        11
-                    </div>
-                    <div class="HeaderMonth">
-                        Jan
-                    </div>
-                    <div class="HeaderYear">
-                        2016
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
 
         <div class="CommentItem">
             <div class="CommentUser">

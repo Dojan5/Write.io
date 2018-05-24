@@ -173,6 +173,7 @@ nav {
     justify-content: center;
     padding: 16px;
     box-shadow: inset 0px 0px 4px -1px var(--secondary-accent);
+    width: 150px;
 }
 
 .CommentUserPortrait {
@@ -195,6 +196,7 @@ nav {
 }
 
 .CommentUserName {
+    text-align: center;
     margin-top: 6px;
     font-size: 16px;
 }
@@ -202,6 +204,7 @@ nav {
 .CommentBody {
     display: flex;
     box-shadow: inset 0px 0px 4px -1px var(--secondary-accent);
+    flex:1;
 }
 
 .CommentText {
