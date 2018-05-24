@@ -14,7 +14,7 @@
         <img src="@UserPortrait" />
     </div>
     <div class="BlogSidebarUserContainer">
-        <div class="SidebarUsername">@Model.Nickname</div>
+        <div class="SidebarTitle">@Model.Nickname</div>
         <div class="SidebarUserPresentation">Vestibulum nec tellus et augue luctus aliquam. Nulla facilisi. Etiam semper metus sed tortor aliquet placerat. Cras est arcu, egestas vitae justo cursus, tincidunt porta nunc. Mauris placerat lobortis nulla ut venenatis. </div>
     </div>
     <div class="Divider"></div>
@@ -22,11 +22,17 @@
         <div class="BlogSearch">
             <input id="BlogSearchbar" data-URL="@ViewBag.BlogURL/S/" class="form-control" type="search" placeholder="Search" aria-label="Search">
         </div>
-        <ul>
-            @foreach (var item in ViewBag.Archive)
+        <div class="Divider"></div>
+        <div class="SidebarArchive">
+            <div class="SidebarTitle">Archive</div>
+            <ul>
+                @foreach (var item in ViewBag.Archive)
             {
-                <li><a href="@ViewBag.BlogURL/S/@item">@item</a></li>
-            }
-        </ul>
+                    <li><a href="@ViewBag.BlogURL/S/@item">@item</a></li>
+                }
+            </ul>
+        </div>
     </div>
+    
 </div>
+<div class="Divider"></div>
