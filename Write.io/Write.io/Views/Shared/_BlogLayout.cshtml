@@ -39,8 +39,8 @@
             <div id="BlogHeaderImage" @headerimage></div>
             <div class="BlogHeaderContents">
                 <div class="BlogTitle">
-                    <h1>@ViewBag.Model.Blog.Title</h1>
-                </div>
+                    <a class="BlogHeaderLink" href="/b/@ViewBag.Model.User.Nickname/@ViewBag.Model.Blog.Title/"><h1>@ViewBag.Model.Blog.Title</h1></a>
+</div>
                 <div class="BlogControllers">
                     <button type="button" class="btn btn-primary"><i class="fa fa-plus">&nbsp;</i>Write Post</button>
                 </div>

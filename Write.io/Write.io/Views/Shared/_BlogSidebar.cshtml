@@ -1,5 +1,6 @@
 ﻿@model Write.io.Models.ApplicationUser
 @{ 
+    
     var UserPortrait = Model.AvatarURL;
     if (Model.AvatarURL == "")
     {
@@ -21,7 +22,7 @@
         <ul>
             @foreach (var item in ViewBag.Archive)
             {
-                <li>@item</li>
+                <li><a href="@ViewBag.BlogURL/S/@item">@item</a></li>
             }
         </ul>
     </div>

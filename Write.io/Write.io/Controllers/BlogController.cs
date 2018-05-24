@@ -27,7 +27,23 @@ namespace Write.io.Controllers
                 throw new HttpException(404, "The blog could not be found.");
             }            
         }
-        
+
+        //Overload to support searching
+        [Route("b/{Nickname}/{BlogTitle}/S/{Query}")]
+        public ActionResult Index(string Nickname, string BlogTitle, string Query)
+        {
+            BlogViewModel model = new BlogViewModel();
+            if (model.Populate(Nickname, BlogTitle, Query) == true)
+            {
+                return View(model);
+            }
+            else
+            {
+                throw new HttpException(404, "The blog could not be found.");
+            }
+        }
+
+        //Views individual posts
         [Route("b/{Nickname}/{BlogTitle}/CreatePost")]
         public ActionResult CreatePost(string Nickname, string BlogTitle)
         {

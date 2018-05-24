@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = Model.Post.Title;
     ViewBag.Model = Model;
+    ViewBag.BlogURL = "/b/" + Model.User.Nickname + "/" + Model.Blog.Title;
     Layout = "~/Views/Shared/_BlogLayout.cshtml";
     ViewBag.Archive = Model.PostArchive;
 }
