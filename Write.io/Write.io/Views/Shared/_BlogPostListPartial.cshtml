@@ -28,7 +28,12 @@
             </div>
             <div class="PostListSubheader">
                 <div class="SubheaderLeft">
-                    <i class="fa fa-user" aria-hidden="true">&nbsp;</i>@post.Blog.User.Nickname&nbsp;|&nbsp; <i class="fa fa-tag" aria-hidden="true"></i>
+                    <i class="fa fa-user" aria-hidden="true">&nbsp;</i>@post.Blog.User.Nickname&nbsp;|&nbsp; 
+                    <i class="fa fa-tag" aria-hidden="true"></i>
+                    @foreach (var tag in post.Tags)
+                    {
+                        <a href="#">@tag.Name</a>
+                    }
                 </div>
                 <div class="SubheaderRight">
                     <i class="fa fa-comments" aria-hidden="true">&nbsp;</i>@post.Comments.Count()

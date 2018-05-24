@@ -139,6 +139,22 @@ nav {
 
 .SubheaderLeft {
     flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.SubheaderLeft a {
+    font-size: 11px;
+    color: var(--light-text);
+    text-shadow: 0px 0px 2px var(--secondary-accent);
+    background-color: var(--primary-color);
+    padding: 0px 3px;
+    border-radius: 4px;
+}
+
+.SubheaderLeft a:hover {
+    background: radial-gradient( var(--primary-color), var(--secondary-color));
+    text-decoration: none;
 }
 
 .SubheaderRight {
