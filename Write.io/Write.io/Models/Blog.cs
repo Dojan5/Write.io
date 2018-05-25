@@ -37,7 +37,7 @@ namespace Write.io.Models
                 {
                     int Year = 0;
                     Int32.TryParse(Query, out Year);
-                    this.Posts = db.Posts.Where(p => p.Title.Contains(Query) || p.Body.Contains(Query) || p.Created.Year == Year).Select(p => p).ToList();
+                    this.Posts = db.Posts.Where(p => p.Title.Contains(Query) || p.Body.Contains(Query) || p.Created.Year == Year).Select(p => p && p.BlogId == this.Blog.Id).ToList();
                 }                
                 this.User = this.Blog.User;
                 this.PostArchive = db.Posts.Where (p => p.BlogId == this.Blog.Id).DistinctBy(p => p.Created.Year).Select(p => p.Created.Year).ToList();

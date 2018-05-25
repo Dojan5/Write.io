@@ -31,10 +31,10 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             error: function (response) {
-                //alert(response.responseText);
+                //Executes when something goes wrong. Maybe do something with this?
             },
             success: function (response) {
-                //alert(response);
+                //Dito for when it works. Dito on the second part too?
             }
         }).done(function () {
             location.reload();
