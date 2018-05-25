@@ -38,4 +38,10 @@ namespace Write.io.Models
             }
         }
     }
+
+    public class PostViewModel
+    {
+        public Post Post { get; set; } = new Post();
+        public Comment Comment { get; set; } = new Comment();
+    }
 }

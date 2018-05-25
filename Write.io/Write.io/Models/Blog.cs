@@ -54,7 +54,7 @@ namespace Write.io.Models
         ApplicationDbContext db = new ApplicationDbContext();
         public ApplicationUser User { get; set; }
         public Blog Blog { get; set; }
-        public Post Post { get; set; }
+        public PostViewModel PostViewModel { get; set; } = new PostViewModel();
         public List<int> PostArchive { get; set; }
 
         //Populates the viewmodel based on input parameters.
@@ -69,9 +69,9 @@ namespace Write.io.Models
                 this.PostArchive = db.Posts.Where(p => p.BlogId == this.Blog.Id).DistinctBy(p => p.Created.Year).Select(p => p.Created.Year).ToList();
                 if (db.Posts.Any(p => p.Title == PostTitle && p.Id == PostID && p.BlogId == this.Blog.Id))
                 {
-                    this.Post = db.Posts.Where(p => p.Id == PostID && p.Title == PostTitle && p.BlogId == this.Blog.Id).Select(p => p).FirstOrDefault();
+                    this.PostViewModel.Post = db.Posts.Where(p => p.Id == PostID && p.Title == PostTitle && p.BlogId == this.Blog.Id).Select(p => p).FirstOrDefault();
                     //Increments views by one
-                    this.Post.Views++;
+                    this.PostViewModel.Post.Views++;
                     db.SaveChanges();
                     return true;
                 }

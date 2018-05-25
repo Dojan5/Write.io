@@ -171,7 +171,7 @@ nav {
         text-shadow: 0px 0px 2px var(--secondary-accent);
         background-color: var(--primary-color);
         padding: 0px 3px;
-        border-radius: 4px;
+        border-radius: 2px;
     }
 
         .SubheaderLeft a:hover {
