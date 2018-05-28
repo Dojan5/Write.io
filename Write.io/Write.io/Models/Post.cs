@@ -18,10 +18,12 @@ namespace Write.io.Models
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
 
-        public String CreateOrUpdate(Post BlogPost, int? PostID = null)
+        public static String CreateOrUpdate(Post BlogPost, int? PostID = null)
         {
             ApplicationDbContext db = new ApplicationDbContext();
+            //Pulls a post from the database
             var Post = db.Posts.SingleOrDefault(p => p.Id == PostID);
+            //If the post exists, it will update the post with the new data, else it will create a new post.
             if (Post != null)
             {
                 Post.Title = BlogPost.Title;
@@ -37,5 +39,11 @@ namespace Write.io.Models
                 return "Post has been created.";
             }
         }
+    }
+
+    public class PostViewModel
+    {
+        public Post Post { get; set; } = new Post();
+        public Comment Comment { get; set; } = new Comment();
     }
 }

@@ -38,7 +38,7 @@ namespace Write.io.Models
                 {
                     int Year = 0;
                     Int32.TryParse(Query, out Year);
-                    this.Posts = db.Posts.Where(p => p.Title.Contains(Query) || p.Body.Contains(Query) || p.Created.Year == Year).Select(p => p).ToList();
+                    this.Posts = db.Posts.Where(p => p.Title.Contains(Query) || p.Body.Contains(Query) || p.Created.Year == Year && p.BlogId == this.Blog.Id).Select(p => p).ToList();
                 }                
                 this.User = this.Blog.User;
                 this.PostArchive = db.Posts.Where (p => p.BlogId == this.Blog.Id).DistinctBy(p => p.Created.Year).Select(p => p.Created.Year).ToList();
@@ -55,7 +55,7 @@ namespace Write.io.Models
         ApplicationDbContext db = new ApplicationDbContext();
         public ApplicationUser User { get; set; }
         public Blog Blog { get; set; }
-        public Post Post { get; set; }
+        public PostViewModel PostViewModel { get; set; } = new PostViewModel();
         public List<int> PostArchive { get; set; }
 
         //Populates the viewmodel based on input parameters.
@@ -70,7 +70,10 @@ namespace Write.io.Models
                 this.PostArchive = db.Posts.Where(p => p.BlogId == this.Blog.Id).DistinctBy(p => p.Created.Year).Select(p => p.Created.Year).ToList();
                 if (db.Posts.Any(p => p.Title == PostTitle && p.Id == PostID && p.BlogId == this.Blog.Id))
                 {
-                    this.Post = db.Posts.Where(p => p.Id == PostID && p.Title == PostTitle && p.BlogId == this.Blog.Id).Select(p => p).FirstOrDefault();
+                    this.PostViewModel.Post = db.Posts.Where(p => p.Id == PostID && p.Title == PostTitle && p.BlogId == this.Blog.Id).Select(p => p).FirstOrDefault();
+                    //Increments views by one
+                    this.PostViewModel.Post.Views++;
+                    db.SaveChanges();
                     return true;
                 }
                 else

@@ -25,7 +25,7 @@ namespace Write.io.Controllers
             else
             {
                 throw new HttpException(404, "The blog could not be found.");
-            }            
+            }
         }
 
         //Overload to support searching
@@ -43,20 +43,59 @@ namespace Write.io.Controllers
             }
         }
 
-        //Views individual posts
-        [Route("b/{Nickname}/{BlogTitle}/CreatePost")]
-        public ActionResult CreatePost(string Nickname, string BlogTitle)
+        //Get method for the create a post dialogue
+        [Route("b/{Nickname}/{BlogTitle}/CreatePost"), HttpGet]
+        public ActionResult CreatePost()
         {
-            string UserID = User.Identity.GetUserId();
-            return View();
-        }
+            var model = new Post()
+            {
+                Title = "",
+                Body = ""
+            };
 
+            return View(model);
+        }
+        //Post method
+        [Route("b/{Nickname}/{BlogTitle}/CreatePost"), HttpPost]
+        public ActionResult CreatePost(Post model, string Nickname, string BlogTitle)
+        {
+            model.Blog = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).SingleOrDefault();
+            //Checks if the logged on user is the owner of the blog
+            if (User.Identity.GetUserId() == model.Blog.User.Id)
+            {
+                ViewBag.Message = Post.CreateOrUpdate(model);
+            }
+            else
+            {
+                ViewBag.Message = "You can't create a post on a blog you don't own.";
+            }
+            
+            return View(ViewBag.Message);
+        }
+        //Views individual posts
         [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}")]
         public ActionResult ViewPost(string Nickname, string BlogTitle, int PostID, string PostTitle)
         {
             BlogPostViewModel model = new BlogPostViewModel();
             model.Populate(Nickname, BlogTitle, PostID, PostTitle);
             return PartialView("ViewPost", model);
+        }
+
+        [HttpPost]
+        public JsonResult PostComment(Comment model)
+        {
+            if (model != null)
+            {
+                model.UserId = User.Identity.GetUserId();
+                model.created = DateTime.Now;
+                db.Comments.Add(model);
+                db.SaveChanges();
+                return Json("Your comment has been created.");
+            }
+            else
+            {
+                return Json("An error has occured. Dispatching codemonkeys.");
+            }
         }
     }
 }
