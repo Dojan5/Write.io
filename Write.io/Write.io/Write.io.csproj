@@ -325,6 +325,7 @@
     <Content Include="Views\Shared\_BlogPostPartial.cshtml" />
     <Content Include="Views\User\EditBlog.cshtml" />
     <Content Include="Views\Blog\PostComment.cshtml" />
+    <Content Include="Views\Blog\CreatePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
