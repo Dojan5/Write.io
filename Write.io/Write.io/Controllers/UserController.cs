@@ -36,20 +36,14 @@ namespace Write.io.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddBlog(AddBlogViewModel obj)
+        public ActionResult AddBlog(Blog obj)
         {
             if (ModelState.IsValid)
             {
-                Blog blog = new Blog();
-                
-                blog.UserId = User.Identity.GetUserId(); ;
-                blog.Created = DateTime.Now;
-                blog.Title = obj.title;
-                blog.BlogHeaderURL = obj.url;
-                blog.Body = obj.body;
-                blog.Template = obj.template;
+                obj.UserId = User.Identity.GetUserId(); ;
+                obj.Created = DateTime.Now;
 
-                db.Blogs.Add(blog);
+                db.Blogs.Add(obj);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

@@ -234,7 +234,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AddBlogViewModel.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -327,6 +326,7 @@
     <Content Include="Views\User\EditBlog.cshtml" />
     <Content Include="Views\Blog\PostComment.cshtml" />
     <Content Include="Views\Blog\CreatePost.cshtml" />
+    <Content Include="Views\User\AddBlog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
