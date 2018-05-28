@@ -20,10 +20,10 @@ namespace Write.io.Controllers
 
         public ActionResult Index()
         {
-            var loggedInUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
-                               .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var user = User.Identity.GetUserId();
 
-            var model = db.Blogs.Where(b => b.User.UserName.Equals(loggedInUser.UserName)).ToList();
+            var model = db.Blogs.Where(b => b.UserId.Equals(user)).ToList();
+            
 
             return View(model);
         }
@@ -36,24 +36,25 @@ namespace Write.io.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddBlog(Blog obj)
+        public ActionResult AddBlog(AddBlogViewModel obj)
         {
-            var loggedInUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>()
-                               .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            obj.User = loggedInUser;
+            if (ModelState.IsValid)
+            {
+                Blog blog = new Blog();
+                
+                blog.UserId = User.Identity.GetUserId(); ;
+                blog.Created = DateTime.Now;
+                blog.Title = obj.title;
+                blog.BlogHeaderURL = obj.url;
+                blog.Body = obj.body;
+                blog.Template = obj.template;
 
-            obj.Created = DateTime.Now;
+                db.Blogs.Add(blog);
+                db.SaveChanges();
 
-            //if (ModelState.IsValid)
-            //{
-            db.Blogs.Add(obj);
-
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
-            //}
-            //return View(obj);
-
+                return RedirectToAction("Index");
+            }
+            return View(obj);
         }
 
 
@@ -79,14 +80,14 @@ namespace Write.io.Controllers
         [HttpPost]
         public ActionResult EditBlog(Blog obj)
         {
-            var row = db.Blogs.Where(b => b.Id.Equals(obj.Id)).FirstOrDefault();
+            var blog = db.Blogs.Where(b => b.Id.Equals(obj.Id)).FirstOrDefault();
 
             if (ModelState.IsValid)
             {
-                row.Title = obj.Title;
-                row.BlogHeaderURL = obj.BlogHeaderURL;
-                row.Body = obj.Body;
-                row.Template = obj.Template;
+                blog.Title = obj.Title;
+                blog.BlogHeaderURL = obj.BlogHeaderURL;
+                blog.Body = obj.Body;
+                blog.Template = obj.Template;
 
                 db.SaveChanges();
 

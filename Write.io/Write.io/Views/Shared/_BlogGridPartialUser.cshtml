@@ -4,7 +4,7 @@
     @foreach (var blog in Model)
     {
         var headerimage = "";
-        if (blog.BlogHeaderURL != null)
+        if (blog.BlogHeaderURL != "")
         {
             headerimage = "style=background-image:url(" + @blog.BlogHeaderURL + ")";
         }
