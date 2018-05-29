@@ -33,7 +33,7 @@ namespace Write.io.Models
                 this.Blog = db.Blogs.Where(b => b.User.Nickname == Nickname && b.Title == BlogTitle).Select(b => b).FirstOrDefault();
                 if (Query == null)
                 {
-                    this.Posts = db.Posts.Where(p => p.BlogId == this.Blog.Id).Select(p => p).ToList();
+                    this.Posts = db.Posts.Where(p => p.BlogId == this.Blog.Id).OrderByDescending(p => p.Created).Select(p => p).ToList();
                 } else
                 {
                     int Year = 0;

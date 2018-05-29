@@ -73,9 +73,24 @@ nav {
     height: 100%;
 }
 
+.BlogTitle {
+    flex: 1;
+    margin-top: 128px;
+}
+
 .BlogControllers {
     display: inline-flex;
     align-self: flex-end;
+    margin-bottom: 24px;
+    margin-right: 10px;
+}
+
+.btn-blog {
+    background-color: var(--primary-color);
+}
+
+.btn-blog:hover {
+    background: radial-gradient( var(--primary-color), var(--secondary-color));
 }
 
 .BlogContainer {
