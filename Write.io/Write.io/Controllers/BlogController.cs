@@ -53,15 +53,16 @@ namespace Write.io.Controllers
                 Body = ""
             };
 
-            return View(model);
+            return PartialView(model);
         }
         //Post method
         [Route("b/{Nickname}/{BlogTitle}/CreatePost"), HttpPost]
         public ActionResult CreatePost(Post model, string Nickname, string BlogTitle)
         {
-            model.Blog = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).SingleOrDefault();
+            model.BlogId = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).Select(b => b.Id).SingleOrDefault();
+            var BlogUserId = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).Select(b => b.UserId).SingleOrDefault();
             //Checks if the logged on user is the owner of the blog
-            if (User.Identity.GetUserId() == model.Blog.User.Id)
+            if (User.Identity.GetUserId() == BlogUserId)
             {
                 ViewBag.Message = Post.CreateOrUpdate(model);
             }
@@ -70,7 +71,7 @@ namespace Write.io.Controllers
                 ViewBag.Message = "You can't create a post on a blog you don't own.";
             }
             
-            return View(ViewBag.Message);
+            return PartialView(ViewBag.Message);
         }
         //Views individual posts
         [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}")]

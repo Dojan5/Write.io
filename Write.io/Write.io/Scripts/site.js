@@ -40,7 +40,39 @@
             location.reload();
         });
     });
-
+    //Handles the write blog-post modal
+    $('#CreateBlogPost').on('shown.bs.modal', function () {
+        var path = window.location.pathname;
+        $.ajax({
+            url: path + "CreatePost/",
+            type: "GET",
+        }).done(function (partialViewResult) {
+            $("#WritePostContainer").html(partialViewResult);
+        });
+    });
+    //Script that handles creating a post
+    $('#CreatePostButton').on('click', function (e) {
+        var path = window.location.pathname;
+        var jsonModel = {
+            "Title": $('#ModelTitle').val(),
+            "Body": $('#ModelBody').val()
+        };
+        $.ajax({
+            url: path + "CreatePost/",
+            type: "POST",
+            data: JSON.stringify(jsonModel),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            error: function (response) {
+                //TODO
+            },
+            success: function (response) {
+                //TODO
+            }
+        }).done(function () {
+            location.reload();
+        });
+    });
 
 });
 

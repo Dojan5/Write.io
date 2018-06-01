@@ -34,6 +34,7 @@ namespace Write.io.Models
             }
             else
             {
+                BlogPost.Created = DateTime.Now;
                 db.Posts.Add(BlogPost);
                 db.SaveChanges();
                 return "Post has been created.";
