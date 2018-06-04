@@ -89,9 +89,9 @@ nav {
     background-color: var(--primary-color);
 }
 
-.btn-blog:hover {
-    background: radial-gradient( var(--primary-color), var(--secondary-color));
-}
+    .btn-blog:hover {
+        background: radial-gradient( var(--primary-color), var(--secondary-color));
+    }
 
 .BlogContainer {
     display: flex;
@@ -118,6 +118,10 @@ nav {
     align-items: center;
 }
 
+.PostListHeader a:hover {
+    text-decoration: none;
+}
+
 .PostListHeaderTitle {
     flex: 1;
     margin: 0px 0px 0px 16px;
@@ -132,6 +136,17 @@ nav {
         text-decoration: none;
     }
 
+.PostListHeaderEditPost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    text-shadow: 0px 0px 8px var(--secondary-accent);
+    width: 64px;
+    height: 64px;
+}
+
 .PostListHeaderDate {
     display: flex;
     flex-direction: column;
@@ -141,6 +156,7 @@ nav {
     color: var(--light-text);
     text-shadow: 0px 0px 8px var(--secondary-accent);
     width: 64px;
+    height: 64px;
     padding: 0;
 }
 
@@ -359,11 +375,11 @@ nav {
     margin-top: 16px;
 }
 
-.SidebarArchive p {
-    text-align: center;
-    width: 100%;
-    font-size: 24px;
-}
+    .SidebarArchive p {
+        text-align: center;
+        width: 100%;
+        font-size: 24px;
+    }
 
     .SidebarArchive ul {
         list-style: none;

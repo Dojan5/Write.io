@@ -55,8 +55,10 @@
         var path = window.location.pathname;
         var jsonModel = {
             "Title": $('#ModelTitle').val(),
-            "Body": $('#ModelBody').val()
+            "Body": $('#ModelBody').val(),
+            "Tags": $('#ModelTags').val()
         };
+        Console.Log(jsonModel.Tags);
         $.ajax({
             url: path + "CreatePost/",
             type: "POST",

@@ -25,6 +25,8 @@ namespace Write.io.Models
 
         public string AvatarURL { get; set; }
 
+        public string UserBio { get; set; }
+
         public virtual ICollection<Blog> Blogs {get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }

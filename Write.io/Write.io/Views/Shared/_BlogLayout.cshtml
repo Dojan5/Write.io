@@ -46,25 +46,13 @@
                 @if (ViewBag.Model.Blog.User.Id == CurrentUserId)
                 {
                     <div class="BlogControllers">
-                        <button type="button" class="btn btn-blog" data-toggle="modal" data-target="#CreateBlogPost"><i class="fa fa-plus">&nbsp;</i>Write Post</button>
+                        <form action="/b/@ViewBag.Model.User.Nickname/@ViewBag.Model.Blog.Title/CreatePost/">
+                            <button type="submit" class="btn btn-blog"><i class="fa fa-plus">&nbsp;</i>Write Post</button>
+                        </form>
                     </div>
                 }
             </div>
         </div>
-
-        @if (ViewBag.Model.Blog.User.Id == CurrentUserId)
-        {
-            <!-- Modal for adding a new post | Will only render if the authenticated user is the same as the blog owner -->
-            <div class="modal fade" id="CreateBlogPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div id="WritePostContainer" class="modal-body">
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
 
         <!-- Renders the body -->
         @RenderBody()

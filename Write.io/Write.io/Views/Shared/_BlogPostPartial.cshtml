@@ -1,4 +1,5 @@
-﻿@model Write.io.Models.PostViewModel
+﻿@using Microsoft.AspNet.Identity;
+@model Write.io.Models.PostViewModel
 @{
     ViewBag.PostID = Model.Post.Id;
     var PostYear = Model.Post.Created.Year.ToString();
@@ -7,6 +8,7 @@
     //Returns item from array, index is pulled based on month -1 as the array starts counting at 0 but months start at 1
     var PostMonth = Months[Model.Post.Created.Month - 1];
     var PostDate = Model.Post.Created.Day.ToString();
+    
 }
 
 <div class="BlogPostContainer">
@@ -15,6 +17,15 @@
             <div class="PostListHeaderTitle">
                 <a class="BlogPostLink" href="/b/@Model.Post.Blog.User.Nickname/@Model.Post.Blog.Title/@Model.Post.Id-@Model.Post.Title">@Model.Post.Title</a>
             </div>
+            @if (ViewBag.Model.Blog.User.Id == User.Identity.GetUserId())
+            {
+                <a href="/b/@Model.Post.Blog.User.Nickname/@Model.Post.Blog.Title/@Model.Post.Id-@Model.Post.Title/EditPost/">
+                    <div class="PostListHeaderEditPost">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                </a>
+            }
+
             <div class="PostListHeaderDate">
                 <div class="HeaderDate">
                     @PostDate
@@ -47,7 +58,7 @@
     </div>
     <h2>Comments</h2>
     <div class="BlogPostCommentContainer">
-        
+
         @Html.Partial("PostComment", Model.Comment)
 
         @if (Model.Post.Comments != null)
@@ -87,6 +98,6 @@
                 </div>
             }
         }
-        
+
     </div>
 </div>

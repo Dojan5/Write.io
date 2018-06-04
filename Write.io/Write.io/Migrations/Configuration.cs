@@ -32,7 +32,8 @@ namespace Write.io.Migrations
                     Email = "rytlock_brimstone@pact.com",
                     UserName = "rytlock_brimstone@pact.com",
                     Nickname = "Tribune Brimstone",
-                    AvatarURL = "https://i.imgur.com/kTQ0SZd.jpg"
+                    AvatarURL = "https://i.imgur.com/kTQ0SZd.jpg",
+                    UserBio = "Brimstone. Rytlock Brimestone, Tribune of the Blood Legion. I was hoping to journal previous and current events here."
                 };
                 var U2 = new ApplicationUser
                 {
@@ -41,7 +42,8 @@ namespace Write.io.Migrations
                     Email = "taimi_and_scruffy@rata.nov",
                     UserName = "taimi_and_scruffy@rata.nov",
                     Nickname = "Taimi",
-                    AvatarURL = "https://i.imgur.com/htRaUlg.jpg"
+                    AvatarURL = "https://i.imgur.com/htRaUlg.jpg",
+                    UserBio = "Taimi. Certified genius. You've most definitely heard of my work before."
                 };
                 var U3 = new ApplicationUser
                 {

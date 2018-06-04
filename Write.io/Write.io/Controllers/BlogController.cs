@@ -44,34 +44,66 @@ namespace Write.io.Controllers
         }
 
         //Get method for the create a post dialogue
-        [Route("b/{Nickname}/{BlogTitle}/CreatePost"), HttpGet]
+        [Route("b/{Nickname}/{BlogTitle}/CreatePost/"), HttpGet]
         public ActionResult CreatePost()
         {
-            var model = new Post()
+            var model = new CreatePostViewModel()
             {
                 Title = "",
-                Body = ""
+                Body = "",
+                Tags = "",
             };
+            return View(model);
+        }
+        //Get for post editing
+        [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}/EditPost/"), HttpGet]
+        public ActionResult CreatePost(int PostID, string PostTitle)
+        {
+            var model = new CreatePostViewModel()
+            {
+                Title = "",
+                Body = "",
+                Tags = "",
+            };
+            //If the post exists, adds the content to the model
+            if (db.Posts.Any(p => p.Id == PostID))
+            {
+                var post = db.Posts.Where(p => p.Id == PostID).FirstOrDefault();
+                model.Title = post.Title;
+                model.Body = post.Body;
+                var Tags = "";
+                foreach (var tag in post.Tags)
+                {
+                    Tags = Tags + tag.Name + ", ";
+                }
+                model.Tags = Tags;
+                model.Id = post.Id;
+            }
 
-            return PartialView(model);
+            return View(model);
         }
         //Post method
         [Route("b/{Nickname}/{BlogTitle}/CreatePost"), HttpPost]
-        public ActionResult CreatePost(Post model, string Nickname, string BlogTitle)
+        public ActionResult CreatePost(CreatePostViewModel model, string Nickname, string BlogTitle)
         {
-            model.BlogId = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).Select(b => b.Id).SingleOrDefault();
+            var post = new Post()
+            {
+                Title = model.Title,
+                Body = model.Body
+            };
+            post.BlogId = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).Select(b => b.Id).SingleOrDefault();
             var BlogUserId = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).Select(b => b.UserId).SingleOrDefault();
             //Checks if the logged on user is the owner of the blog
             if (User.Identity.GetUserId() == BlogUserId)
             {
-                ViewBag.Message = Post.CreateOrUpdate(model);
+                ViewBag.Message = Post.CreateOrUpdate(post, model.Tags, model.Id);
             }
             else
             {
                 ViewBag.Message = "You can't create a post on a blog you don't own.";
             }
             
-            return PartialView(ViewBag.Message);
+            return View(ViewBag.Message);
         }
         //Views individual posts
         [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}")]
