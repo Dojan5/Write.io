@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using Write.io.Models;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 
 
 
@@ -18,6 +17,7 @@ namespace Write.io.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
         
 
+        [Route("MyBlogs")]
         public ActionResult Index()
         {
             var user = User.Identity.GetUserId();
@@ -30,12 +30,14 @@ namespace Write.io.Controllers
 
 
         [HttpGet]
+        [Route("AddBlog")]
         public ActionResult AddBlog()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("AddBlog")]
         public ActionResult AddBlog(Blog obj)
         {
             if (ModelState.IsValid)
@@ -64,6 +66,7 @@ namespace Write.io.Controllers
 
 
         [HttpGet]
+        [Route("EditBlog/{Id}")]
         public ActionResult EditBlog(int id)
         {
             Blog obj = db.Blogs.Where(b => b.Id.Equals(id)).SingleOrDefault();
@@ -72,9 +75,10 @@ namespace Write.io.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditBlog(Blog obj)
+        [Route("EditBlog/{Id}")]
+        public ActionResult EditBlog(Blog obj, string Title)
         {
-            var blog = db.Blogs.Where(b => b.Id.Equals(obj.Id)).FirstOrDefault();
+            var blog = db.Blogs.Where(b => b.Id.Equals(obj.Id)).SingleOrDefault();
 
             if (ModelState.IsValid)
             {
