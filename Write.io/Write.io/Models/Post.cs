@@ -47,14 +47,9 @@ namespace Write.io.Models
             }
             else
             {
-                var NewPost = new Post()
-                {
-                    Title = BlogPost.Title,
-                    Body = BlogPost.Body,
-                    Created = DateTime.Now,
-                    Tags = PostTags
-                };
-                db.Posts.Add(NewPost);
+                BlogPost.Tags = PostTags;
+                BlogPost.Created = DateTime.Now;
+                db.Posts.Add(BlogPost);
                 db.SaveChanges();
                 return "Post has been created.";
             }

@@ -56,19 +56,15 @@ namespace Write.io.Controllers
             return View(model);
         }
         //Get for post editing
-        [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}/EditPost/"), HttpGet]
+        [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}/Edit/"), HttpGet]
         public ActionResult CreatePost(int PostID, string PostTitle)
         {
-            var model = new CreatePostViewModel()
-            {
-                Title = "",
-                Body = "",
-                Tags = "",
-            };
+            var model = new CreatePostViewModel();
             //If the post exists, adds the content to the model
             if (db.Posts.Any(p => p.Id == PostID))
             {
                 var post = db.Posts.Where(p => p.Id == PostID).FirstOrDefault();
+                model.Id = PostID;
                 model.Title = post.Title;
                 model.Body = post.Body;
                 var Tags = "";
@@ -76,6 +72,8 @@ namespace Write.io.Controllers
                 {
                     Tags = Tags + tag.Name + ", ";
                 }
+                Tags.TrimEnd(' ');
+                Tags.TrimEnd(',');
                 model.Tags = Tags;
                 model.Id = post.Id;
             }
