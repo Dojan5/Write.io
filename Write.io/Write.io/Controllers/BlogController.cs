@@ -103,6 +103,30 @@ namespace Write.io.Controllers
 
             return RedirectToAction("Index", new { Nickname = Nickname, BlogTitle = BlogTitle });
         }
+        //Post method for updating a post
+        [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}/Edit"), HttpPost]
+        public ActionResult CreatePost(CreatePostViewModel model, string Nickname, string BlogTitle, int PostID, string PostTitle)
+        {
+            var post = new Post()
+            {
+                Id = PostID,
+                Title = model.Title,
+                Body = model.Body
+            };
+            post.BlogId = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).Select(b => b.Id).SingleOrDefault();
+            var BlogUserId = db.Blogs.Where(b => b.Title == BlogTitle && b.User.Nickname == Nickname).Select(b => b.UserId).SingleOrDefault();
+            //Checks if the logged on user is the owner of the blog
+            if (User.Identity.GetUserId() == BlogUserId)
+            {
+                ViewBag.Message = Post.CreateOrUpdate(post, model.Tags, PostID);
+            }
+            else
+            {
+                ViewBag.Message = "You can't create a post on a blog you don't own.";
+            }
+
+            return RedirectToAction("ViewPost", new { Nickname = Nickname, BlogTitle = BlogTitle, PostID = PostID, PostTitle = PostTitle });
+        }
         //Views individual posts
         [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}")]
         public ActionResult ViewPost(string Nickname, string BlogTitle, int PostID, string PostTitle)

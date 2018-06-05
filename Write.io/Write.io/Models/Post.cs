@@ -42,6 +42,7 @@ namespace Write.io.Models
                 Post.Title = BlogPost.Title;
                 Post.Body = BlogPost.Body;
                 Post.Tags = PostTags;
+                db.Entry(Post).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return "Post has been updated.";
             }
