@@ -100,8 +100,8 @@ namespace Write.io.Controllers
             {
                 ViewBag.Message = "You can't create a post on a blog you don't own.";
             }
-            
-            return View(ViewBag.Message);
+
+            return RedirectToAction("Index", new { Nickname = Nickname, BlogTitle = BlogTitle });
         }
         //Views individual posts
         [Route("b/{Nickname}/{BlogTitle}/{PostID}-{PostTitle}")]
