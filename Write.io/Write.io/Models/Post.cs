@@ -19,7 +19,7 @@ namespace Write.io.Models
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
 
-        public static String CreateOrUpdate(Post BlogPost, string Tags, int? PostID = null)
+        public static Post CreateOrUpdate(Post BlogPost, string Tags, int? PostID = null)
         {
             ApplicationDbContext db = new ApplicationDbContext();
             //Pulls a post from the database
@@ -44,7 +44,7 @@ namespace Write.io.Models
                 Post.Tags = PostTags;
                 db.Entry(Post).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return "Post has been updated.";
+                return Post;
             }
             else
             {
@@ -52,7 +52,7 @@ namespace Write.io.Models
                 BlogPost.Created = DateTime.Now;
                 db.Posts.Add(BlogPost);
                 db.SaveChanges();
-                return "Post has been created.";
+                return BlogPost;
             }
         }
     }
