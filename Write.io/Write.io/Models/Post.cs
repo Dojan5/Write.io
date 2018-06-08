@@ -30,11 +30,21 @@ namespace Write.io.Models
             foreach (var item in TagArray)
             {
                 item.TrimStart(' ');
-                Tag Tag = new Tag()
+                if (db.Tags.Any(t => t.Name == item) == true && item != "")
                 {
-                    Name = item
-                };
-                PostTags.Add(Tag);
+                    PostTags.Add(db.Tags.Where(t => t.Name == item).FirstOrDefault());
+                }
+                else
+                {
+                    if (item != "")
+                    {
+                        Tag Tag = new Tag()
+                        {
+                            Name = item
+                        };
+                        PostTags.Add(Tag);
+                    }
+                }
             }
             //If the post exists, it will update the post with the new data, else it will create a new post.
             if (Post != null)
