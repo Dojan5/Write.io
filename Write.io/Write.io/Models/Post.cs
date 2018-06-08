@@ -51,7 +51,13 @@ namespace Write.io.Models
             {
                 Post.Title = BlogPost.Title;
                 Post.Body = BlogPost.Body;
-                Post.Tags = PostTags;
+                foreach (var tag in PostTags)
+                {
+                    if (Post.Tags.Contains(tag) != true)
+                    {
+                        Post.Tags.Add(tag);
+                    }
+                }
                 db.Entry(Post).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return Post;
