@@ -77,8 +77,9 @@
     });
 
     $('#PostComment').on('keyup', function () {
-        var CharacterCount = $('#PostComment').length();
-        $('#CharCount').html = `Character count: ${CharacterCount}`;
+        var Comment = $('#PostComment').val();
+        var CharacterCount = Comment.length;
+        $('#CharCount').html(`Character count: ${CharacterCount}`);
     });
 
 });
