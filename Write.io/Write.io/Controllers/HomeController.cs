@@ -19,7 +19,11 @@ namespace Write.io.Controllers
         public ActionResult Search(string Query)
         {
             var SearchQuery = Query.Split(' ').ToList();
-            var model = db.Blogs.Where(b => b.Title.Contains(Query) || b.Body.Contains(Query) || b.User.FirstName.Contains(Query) || b.User.LastName.Contains(Query) || b.User.Email.Contains(Query)).Select(b => b).ToList();
+            List<Blog> model = new List<Blog>();
+            foreach (var q in SearchQuery)
+            {
+                model.AddRange(db.Blogs.Where(b => b.Title.Contains(q) || b.Body.Contains(q) || b.User.FirstName.Contains(q) || b.User.LastName.Contains(q) || b.User.Email.Contains(q)).Select(b => b).ToList());
+            }
             return PartialView("_BlogGridPartial", model);
         }
 
