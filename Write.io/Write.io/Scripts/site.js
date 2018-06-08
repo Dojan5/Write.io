@@ -76,6 +76,11 @@
         });
     });
 
+    $('#PostComment').on('keyup', function () {
+        var CharacterCount = $('#PostComment').length();
+        $('#CharCount').html = `Character count: ${CharacterCount}`;
+    });
+
 });
 
 //Front-page search function
