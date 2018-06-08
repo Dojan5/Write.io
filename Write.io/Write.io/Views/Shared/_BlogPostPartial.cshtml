@@ -58,8 +58,10 @@
     </div>
     <h2>Comments</h2>
     <div class="BlogPostCommentContainer">
-
-        @Html.Partial("PostComment", Model.Comment)
+        @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated == true)
+        {
+            @Html.Partial("PostComment", Model.Comment)
+        }
 
         @if (Model.Post.Comments != null)
         {
