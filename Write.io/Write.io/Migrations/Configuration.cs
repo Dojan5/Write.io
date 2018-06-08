@@ -19,6 +19,23 @@ namespace Write.io.Migrations
 
         protected override void Seed(Write.io.Models.ApplicationDbContext context)
         {
+            var t1 = new Theme()
+            {
+                Name = "default"
+            };
+            var t2 = new Theme()
+            {
+                Name = "brimstone"
+            };
+            var t3 = new Theme()
+            {
+                Name = "butterfly"
+            };
+            var t4 = new Theme()
+            {
+                Name = "necromancer"
+            };
+            context.Themes.AddOrUpdate(t => t.Name, t1, t2, t3, t4);
             //Seeds a user to the database
             if (!context.Users.Any(u => u.Email == "rytlock_brimstone@pact.com"))
             {
@@ -118,7 +135,8 @@ namespace Write.io.Migrations
                 BlogHeaderURL = "https://i.imgur.com/B1VNyDb.jpg",
                 Body = "A place where I log events that have happened throughout my years as a tribune. There may also be the occasional rant in here. Stay away, Thackeray.",
                 Created = DateTime.Now,
-                User = context.Users.SingleOrDefault(u => u.Email == "rytlock_brimstone@pact.com")                
+                User = context.Users.SingleOrDefault(u => u.Email == "rytlock_brimstone@pact.com"),
+                Template = t2                
             };
             var Blog2 = new Blog
             {
@@ -127,7 +145,8 @@ namespace Write.io.Migrations
                 BlogHeaderURL = "https://i.imgur.com/CqiOnT7.jpg",
                 Body = "In my research into the dragons I stumble upon all kinds of fascinating discoveries. In this blog I will regale you with stories I've amassed when working in the lab here in Rata Novus.",
                 Created = DateTime.Now,
-                User = context.Users.SingleOrDefault(u => u.Email == "taimi_and_scruffy@rata.nov")
+                User = context.Users.SingleOrDefault(u => u.Email == "taimi_and_scruffy@rata.nov"),
+                Template = t1
             };
             context.Blogs.AddOrUpdate(b => b.Id, Blog1, Blog2);
             //Seeds posts for the blogs

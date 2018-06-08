@@ -240,11 +240,15 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\Theme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\Themes\necromancer.css" />
+    <Content Include="Content\Themes\butterfly.css" />
+    <Content Include="Content\Themes\brimstone.css" />
     <Content Include="Content\Themes\default.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

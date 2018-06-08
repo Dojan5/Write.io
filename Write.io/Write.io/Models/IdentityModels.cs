@@ -58,6 +58,7 @@ namespace Write.io.Models
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Theme> Themes { get; set; }
 
     }
 }
