@@ -42,7 +42,7 @@
                     <i class="fa fa-tag" aria-hidden="true"></i>
                     @foreach (var tag in post.Tags)
                     {
-                        <a href="#">@tag.Name</a>
+                        <a href="/b/@post.Blog.User.Nickname/@post.Blog.Title/S/@tag.Name">@tag.Name</a>
                     }
                 </div>
                 <div class="SubheaderRight">

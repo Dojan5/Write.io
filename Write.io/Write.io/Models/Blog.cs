@@ -41,7 +41,7 @@ namespace Write.io.Models
                     var SearchQuery = Query.Split(' ').ToList();
                     foreach (var q in SearchQuery)
                     {
-                        this.Posts.AddRange(db.Posts.Where(p => p.Title.Contains(q) || p.Body.Contains(q) || p.Created.Year == Year && p.BlogId == this.Blog.Id).Select(p => p).ToList());
+                        this.Posts.AddRange(db.Posts.Where(p => p.Title.Contains(q) || p.Body.Contains(q) || p.Tags.Any(t => t.Name.Contains(q)) || p.Created.Year == Year && p.BlogId == this.Blog.Id).Select(p => p).ToList());
                     }
                 }                
                 this.User = this.Blog.User;
