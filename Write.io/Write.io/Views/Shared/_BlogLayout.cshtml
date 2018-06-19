@@ -3,7 +3,7 @@
 <html>
 <head>
     @{
-        var template = ViewBag.Model.Blog.Template.Name + ".css";
+        var template = ViewBag.Model.Blog.Template + ".css";
         var headerimage = "";
         var CurrentUserId = User.Identity.GetUserId();
         if (ViewBag.Model.Blog.BlogHeaderURL != null)

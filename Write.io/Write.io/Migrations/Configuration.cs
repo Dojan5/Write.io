@@ -136,7 +136,7 @@ namespace Write.io.Migrations
                 Body = "A place where I log events that have happened throughout my years as a tribune. There may also be the occasional rant in here. Stay away, Thackeray.",
                 Created = DateTime.Now,
                 User = context.Users.SingleOrDefault(u => u.Email == "rytlock_brimstone@pact.com"),
-                Template = t2                
+                Template = "brimstone"                
             };
             var Blog2 = new Blog
             {
@@ -146,7 +146,7 @@ namespace Write.io.Migrations
                 Body = "In my research into the dragons I stumble upon all kinds of fascinating discoveries. In this blog I will regale you with stories I've amassed when working in the lab here in Rata Novus.",
                 Created = DateTime.Now,
                 User = context.Users.SingleOrDefault(u => u.Email == "taimi_and_scruffy@rata.nov"),
-                Template = t1
+                Template = "default"
             };
             context.Blogs.AddOrUpdate(b => b.Id, Blog1, Blog2);
             //Seeds posts for the blogs

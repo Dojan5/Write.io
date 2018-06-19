@@ -14,7 +14,7 @@ namespace Write.io.Models
         public string Body { get; set; }
         public DateTime Created { get; set; }
         public string UserId { get; set; }
-        public virtual Theme Template { get; set; }
+        public string Template { get; set; }
         public virtual ApplicationUser User {get; set; }
         public virtual ICollection<Post> Posts {get; set; }
     }
